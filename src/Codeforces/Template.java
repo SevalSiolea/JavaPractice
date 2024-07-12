@@ -2,7 +2,7 @@ package Codeforces;
 
 public class Template {
 
-    private enum solution { solution1, solution2, solution3}
+    private enum solution { solution1, solution2, solution3 }
 
     public static void main( String[] args ) {
         solution( solution.solution1 );
