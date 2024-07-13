@@ -19,7 +19,7 @@ public class E1987B {
             int[] arr = new int[ arrLength ];
             for( int j=0; j < arrLength; j++ )
                 arr[ j ] = scanner.nextInt();
-            coins[ i ] = solution( Strategy.strategy1, arr );
+            coins[ i ] = solution( strategy, arr );
         }
 
         for( int i=0; i < testCount; i++ )
