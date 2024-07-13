@@ -11,36 +11,36 @@ public class Template {
         Scanner scanner = new Scanner( System.in );
 
         int testCount = scanner.nextInt();
-        int[] results = new int[ testCount ];
+        long[] results = new long[ testCount ];
         for( int i=0; i < testCount; i++ ) {
             int arrLength = scanner.nextInt();
             int[] arr = new int[ arrLength ];
             for( int j=0; j < arrLength; j++ )
                 arr[ j ] = scanner.nextInt();
-            results[ i ] = solution( solution.solution1 );
+            results[ i ] = solution( solution.solution1, arr );
         }
 
         for( int i=0; i < testCount; i++ )
             System.out.print( results[ i ] );
     }
 
-    private static int solution( solution solution ) {
+    private static long solution( solution solution, int[] arr ) {
         switch( solution ) {
             case solution1:
-                return solution1();
+                return solution1( arr );
             case solution2:
-                return solution2();
+                return solution2( arr );
             case solution3:
-                return solution3();
+                return solution3( arr );
             default:
-                return -1;
+                return -1L;
         }
     }
 
-    private static int solution1() { return 0; }
+    private static long solution1( int[] arr ) { return 0L; }
 
-    private static int solution2() { return 0; }
+    private static long solution2( int[] arr ) { return 0L; }
 
-    private static int solution3() { return 0; }
+    private static long solution3( int[] arr ) { return 0L; }
 
 }

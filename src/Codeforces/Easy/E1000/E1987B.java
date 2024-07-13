@@ -12,7 +12,7 @@ public class E1987B {
         Scanner scanner = new Scanner( System.in );
 
         int testCount = scanner.nextInt();
-        int[] coins = new int[ testCount ];
+        long[] coins = new long[ testCount ];
         for( int i=0; i < testCount; i++ ) {
             int arrLength = scanner.nextInt();
             int[] arr = new int[ arrLength ];
@@ -25,22 +25,22 @@ public class E1987B {
             System.out.println( coins[ i ] );
     }
 
-    private static int solution( solution solution, int[] arr ) {
+    private static long solution( solution solution, int[] arr ) {
         switch( solution ) {
             case solution1:
                 return solution1( arr );
             case solution2:
                 return solution2( arr );
             default:
-                return 0;
+                return -1L;
         }
     }
 
     // simulate solution
     // simulate the process of pay coins and non-decrease array
-    private static int solution1( int[] arr ) {
+    private static long solution1( int[] arr ) {
 
-        int coin = 0;
+        long coin = 0L;
 
         for( int i=0; i < arr.length - 1; i++ )
             while( arr[ i ] > arr[ i+1 ] ) {
@@ -59,7 +59,7 @@ public class E1987B {
     // calculate solution
     // firstly calculate diff[ i ] as operation times of arr[ i+1 ]
     // then calculate sum of operation times
-    private static int solution2( int[] arr ) {
+    private static long solution2( int[] arr ) {
 
         // diff[ i ] is operation times of arr[ i+1 ]
         int[] diff = new int[ arr.length - 1 ];
@@ -74,10 +74,11 @@ public class E1987B {
 
         // calculate sum of operation times
         Arrays.sort( diff );
-        int k = diff.length - 1;
-        int coins = 0;
+        long coins = 0L;
+
+        int choseK = diff.length - 1;
         for( int i=0; i < diff.length - 1; i++ ) {
-            coins += ( k - i + 1 ) * ( diff[ i+1 ] - diff[ i ] );
+            coins += (long) ( choseK - i + 1 ) * ( diff[ i+1 ] - diff[ i ] );
         }
         return coins;
     }
