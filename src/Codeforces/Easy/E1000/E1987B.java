@@ -5,11 +5,12 @@ import java.util.Arrays;
 
 public class E1987B {
 
-    private enum solution { solution1, solution2 }
+    private enum Strategy { strategy1, strategy2 }
 
     public static void main( String[] args ) {
 
         Scanner scanner = new Scanner( System.in );
+        Strategy strategy = Strategy.strategy1;
 
         int testCount = scanner.nextInt();
         long[] coins = new long[ testCount ];
@@ -18,18 +19,18 @@ public class E1987B {
             int[] arr = new int[ arrLength ];
             for( int j=0; j < arrLength; j++ )
                 arr[ j ] = scanner.nextInt();
-            coins[ i ] = solution( solution.solution2, arr );
+            coins[ i ] = solution( strategy, arr );
         }
 
         for( int i=0; i < testCount; i++ )
             System.out.println( coins[ i ] );
     }
 
-    private static long solution( solution solution, int[] arr ) {
-        switch( solution ) {
-            case solution1:
+    private static long solution( Strategy strategy, int[] arr ) {
+        switch( strategy ) {
+            case strategy1:
                 return solution1( arr );
-            case solution2:
+            case strategy2:
                 return solution2( arr );
             default:
                 return -1L;

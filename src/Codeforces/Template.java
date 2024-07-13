@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 public class Template {
 
-    private enum solution { solution1, solution2, solution3 }
+    private enum Strategy { strategy1, strategy2, strategy3 }
 
     public static void main( String[] args ) {
 
         Scanner scanner = new Scanner( System.in );
+        Strategy strategy = Strategy.strategy1;
 
         int testCount = scanner.nextInt();
         long[] results = new long[ testCount ];
@@ -17,20 +18,20 @@ public class Template {
             int[] arr = new int[ arrLength ];
             for( int j=0; j < arrLength; j++ )
                 arr[ j ] = scanner.nextInt();
-            results[ i ] = solution( solution.solution1, arr );
+            results[ i ] = solution( strategy, arr );
         }
 
         for( int i=0; i < testCount; i++ )
             System.out.print( results[ i ] );
     }
 
-    private static long solution( solution solution, int[] arr ) {
-        switch( solution ) {
-            case solution1:
+    private static long solution( Strategy strategy, int[] arr ) {
+        switch( strategy ) {
+            case strategy1:
                 return solution1( arr );
-            case solution2:
+            case strategy2:
                 return solution2( arr );
-            case solution3:
+            case strategy3:
                 return solution3( arr );
             default:
                 return -1L;

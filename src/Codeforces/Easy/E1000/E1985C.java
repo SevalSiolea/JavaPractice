@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 public class E1985C {
 
-    private enum solution { solution1, solution2 }
+    private enum Strategy { strategy1, strategy2 }
 
     public static void main( String[] args ) {
 
         Scanner scanner = new Scanner( System.in );
+        Strategy strategy = Strategy.strategy1;
 
         int testCount = scanner.nextInt();
         int[] prefixes = new int[ testCount ];
@@ -17,18 +18,18 @@ public class E1985C {
             long[] arr = new long[ arrLength ];
             for( int j=0; j < arrLength; j++ )
                 arr[ j ] = scanner.nextLong();
-            prefixes[ i ] = solution( solution.solution2, arr );
+            prefixes[ i ] = solution( strategy, arr );
         }
 
         for( int i=0; i < testCount; i++ )
             System.out.println( prefixes[ i ] );
     }
 
-    private static int solution( solution solution, long[] arr ) {
-        switch( solution ) {
-            case solution1:
+    private static int solution( Strategy strategy, long[] arr ) {
+        switch( strategy ) {
+            case strategy1:
                 return solution1( arr );
-            case solution2:
+            case strategy2:
                 return solution2( arr );
             default:
                 return -1;
