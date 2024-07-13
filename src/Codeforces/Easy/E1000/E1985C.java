@@ -18,7 +18,7 @@ public class E1985C {
             long[] arr = new long[ arrLength ];
             for( int j=0; j < arrLength; j++ )
                 arr[ j ] = scanner.nextLong();
-            prefixes[ i ] = solution( strategy, arr );
+            prefixes[ i ] = solution( Strategy.strategy1, arr );
         }
 
         for( int i=0; i < testCount; i++ )
