@@ -1,7 +1,6 @@
 package Codeforces.Easy.E1000;
 
 import java.util.Scanner;
-import java.util.Arrays;
 
 public class E1987B {
 
@@ -74,7 +73,7 @@ public class E1987B {
                 diff[ i ] = 0;
 
         // calculate sum of operation times
-        Arrays.sort( diff );
+        java.util.Arrays.sort( diff );
         long coins = 0L;
 
         int choseK = diff.length - 1;
