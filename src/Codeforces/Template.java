@@ -22,7 +22,7 @@ public class Template {
         }
 
         for( int i=0; i < testCount; i++ )
-            System.out.print( results[ i ] );
+            System.out.println( results[ i ] );
     }
 
     private static long solution( Strategy strategy, int[] arr ) {
