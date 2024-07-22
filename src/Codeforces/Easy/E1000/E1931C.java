@@ -2,7 +2,7 @@ package Codeforces.Easy.E1000;
 
 public class E1931C {
 
-    private enum Strategy { STRATEGY1, STRATEGY2, STRATEGY3 }
+    private enum Strategy { STRATEGY1 }
 
     public static void main( String[] args ) {
 
