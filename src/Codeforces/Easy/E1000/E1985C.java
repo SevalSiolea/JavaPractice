@@ -1,14 +1,12 @@
 package Codeforces.Easy.E1000;
 
-import java.util.Scanner;
-
 public class E1985C {
 
     private enum Strategy { strategy1, strategy2 }
 
     public static void main( String[] args ) {
 
-        Scanner scanner = new Scanner( System.in );
+        java.util.Scanner scanner = new java.util.Scanner( System.in );
         Strategy strategy = Strategy.strategy1;
 
         int testCount = scanner.nextInt();
