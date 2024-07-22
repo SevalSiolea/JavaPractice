@@ -2,12 +2,12 @@ package Codeforces.Easy.E1000;
 
 public class E1975B {
 
-    private enum Strategy { strategy1 }
+    private enum Strategy { STRATEGY1 }
 
     public static void main( String[] args ) {
 
         java.util.Scanner scanner = new java.util.Scanner( System.in );
-        Strategy strategy = Strategy.strategy1;
+        Strategy strategy = Strategy.STRATEGY1;
 
         int testCount = scanner.nextInt();
         boolean[] results = new boolean[ testCount ];
@@ -25,7 +25,7 @@ public class E1975B {
 
     private static boolean solution( Strategy strategy, int[] arr ) {
         switch( strategy ) {
-            case strategy1:
+            case STRATEGY1:
                 return solution1( arr );
             default:
                 return false;

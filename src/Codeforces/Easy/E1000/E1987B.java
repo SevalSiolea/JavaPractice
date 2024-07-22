@@ -2,12 +2,12 @@ package Codeforces.Easy.E1000;
 
 public class E1987B {
 
-    private enum Strategy { strategy1, strategy2 }
+    private enum Strategy { STRATEGY1, STRATEGY2 }
 
     public static void main( String[] args ) {
 
         java.util.Scanner scanner = new java.util.Scanner( System.in );
-        Strategy strategy = Strategy.strategy1;
+        Strategy strategy = Strategy.STRATEGY1;
 
         int testCount = scanner.nextInt();
         long[] coins = new long[ testCount ];
@@ -25,9 +25,9 @@ public class E1987B {
 
     private static long solution( Strategy strategy, int[] arr ) {
         switch( strategy ) {
-            case strategy1:
+            case STRATEGY1:
                 return solution1( arr );
-            case strategy2:
+            case STRATEGY2:
                 return solution2( arr );
             default:
                 return -1L;

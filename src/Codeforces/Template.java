@@ -2,12 +2,12 @@ package Codeforces;
 
 public class Template {
 
-    private enum Strategy { strategy1, strategy2, strategy3 }
+    private enum Strategy { STRATEGY1, STRATEGY2, STRATEGY3 }
 
     public static void main( String[] args ) {
 
         java.util.Scanner scanner = new java.util.Scanner( System.in );
-        Strategy strategy = Strategy.strategy1;
+        Strategy strategy = Strategy.STRATEGY1;
 
         int testCount = scanner.nextInt();
         long[] results = new long[ testCount ];
@@ -25,11 +25,11 @@ public class Template {
 
     private static long solution( Strategy strategy, int[] arr ) {
         switch( strategy ) {
-            case strategy1:
+            case STRATEGY1:
                 return solution1( arr );
-            case strategy2:
+            case STRATEGY2:
                 return solution2( arr );
-            case strategy3:
+            case STRATEGY3:
                 return solution3( arr );
             default:
                 return -1L;

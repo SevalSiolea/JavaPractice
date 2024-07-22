@@ -2,12 +2,12 @@ package Codeforces.Easy.E1000;
 
 public class E1985C {
 
-    private enum Strategy { strategy1, strategy2 }
+    private enum Strategy { STRATEGY1, STRATEGY2 }
 
     public static void main( String[] args ) {
 
         java.util.Scanner scanner = new java.util.Scanner( System.in );
-        Strategy strategy = Strategy.strategy1;
+        Strategy strategy = Strategy.STRATEGY2;
 
         int testCount = scanner.nextInt();
         int[] prefixes = new int[ testCount ];
@@ -25,9 +25,9 @@ public class E1985C {
 
     private static int solution( Strategy strategy, long[] arr ) {
         switch( strategy ) {
-            case strategy1:
+            case STRATEGY1:
                 return solution1( arr );
-            case strategy2:
+            case STRATEGY2:
                 return solution2( arr );
             default:
                 return -1;
