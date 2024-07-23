@@ -1,5 +1,44 @@
 package Codeforces;
 
+/**
+ * Template of codeforces problems.
+ * <p>
+ * Difficulty : package difficulty + codeforces difficulty + actual difficulty<br>
+ * package difficulty : Easy(E), Medium(M), Hard(H), Expert(Ex), Master(Ma)<br>
+ * codeforces difficulty : E1000, E1100, E1200, E1300, M1400, M1500, H1600, H1700, H1800<br>
+ * codeforces difficulty : Ex1900, Ex2000, Ma2100, Ma2200, Ma2300<br>
+ * actual difficulty : easy, medium, difficult compared to average codeforces difficulty<br>
+ * actual difficulty : for example, E1300-difficult maybe M1400 or M1500<br>
+ * for example : H1600-medium, E1200-difficult, Ex2000-easy<br>
+ *
+ * <p>
+ * Data structure tag : data structure of this problem<br>
+ * data structure : list, arrayList, linkedList, stack, queue, deque<br>
+ * data structure : tree, binary tree, binary search tree<br>
+ * data structure : AVLTree, splay tree, red-black tree, segment tree<br>
+ * data structure : heap, binary heap, leftist heap, skew heap, binomial queue<br>
+ * data structure : collection, hashtable, string, array, matrix, union-find sets<br>
+ *
+ * <p>
+ * Algorithm tag : algorithm of this problem<br>
+ * algorithm : recursion, divide and conquer, greedy, backtracking<br>
+ * algorithm : dynamic programming, memoization search<br>
+ * algorithm : sort, bucket sort, radix sort<br>
+ * algorithm : graph, BFS, DFS, shortest path, flow network, spanning tree<br>
+ * algorithm : simulate, enumerate, brute force, math, constructive<br>
+ * algorithm : two pointers, sliding window, randomized, bitwise operation<br>
+ * algorithm : binary search, quick select, KMP<br>
+ *
+ * <p>
+ * Feature : describe features which make this problem different and should be thought twice
+ *
+ * <p>
+ * Solution : solution list of solutions which is valuable
+ * solution : every solution and its description follows in a new line
+ *
+ * <p>
+ * Date : date of start this problem
+ */
 public class Template {
 
     private enum Strategy { STRATEGY1, STRATEGY2, STRATEGY3 }
@@ -36,6 +75,17 @@ public class Template {
         }
     }
 
+    /**
+     * Description : brief description of this solution<br>
+     * Complexity : time complexity and space complexity<br>
+     * Idea : thought of how to analyse and solve this problem using this solution<br>
+     * Hint : key point of this solution<br>
+     * Steps : detailed steps of this solution<br>
+     *
+     * @param arr param list of one test case
+     * @return result of one test case
+     * @deprecated this solution is wrong and deprecated
+     */
     private static long solution1( int[] arr ) { return 0L; }
 
     private static long solution2( int[] arr ) { return 0L; }
