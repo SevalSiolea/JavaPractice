@@ -4,12 +4,12 @@ package Codeforces;
  * Template of codeforces problems.
  * <p>
  * Difficulty : package difficulty + codeforces difficulty + actual difficulty<br>
- * package difficulty : Easy(E), Medium(M), Hard(H), Expert(Ex), Master(Ma)<br>
+ * package difficulty : Easy(E), Medium(M), Hard(H), Expert(EX), Master(MA)<br>
  * codeforces difficulty : E1000, E1100, E1200, E1300, M1400, M1500, H1600, H1700, H1800<br>
- * codeforces difficulty : Ex1900, Ex2000, Ma2100, Ma2200, Ma2300<br>
+ * codeforces difficulty : EX1900, EX2000, MA2100, MA2200, MA2300<br>
  * actual difficulty : easy, medium, difficult compared to average codeforces difficulty<br>
  * actual difficulty : for example, E1300-difficult maybe M1400 or M1500<br>
- * for example : H1600-medium, E1200-difficult, Ex2000-easy<br>
+ * for example : H1600-medium, E1200-difficult, EX2000-easy<br>
  *
  * <p>
  * Data structure tag : data structure of this problem<br>
