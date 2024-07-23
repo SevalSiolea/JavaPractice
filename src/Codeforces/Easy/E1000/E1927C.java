@@ -1,5 +1,9 @@
 package Codeforces.Easy.E1000;
 
+/**
+ * Difficulty : E1927-medium<br>
+ * Date : 2024.7.22<br>
+ */
 public class E1927C {
 
     private enum Strategy { STRATEGY1 }
@@ -37,37 +41,38 @@ public class E1927C {
         }
     }
 
-    // easiest solution
-    // traverse arrA and arrB, note whether i can be chosen from arrA or arrB
-    // if there exist i cant be chosen from arrA or arrB, return false
-    // if more than half elements can be chosen from arrA or from arrA and arrB, and
-    // if more than half elements can be chosen from arrB or from arrA and arrB
-    // return true;
+    /**
+     * Description : simple solution<br>
+     * Complexity : time O( N1 + N2 ), space O( N1 + N2 )<br>
+     * Hint : little integers represent occurring times<br>
+     * Hint : 0 in neither, 1 in A, 2 in B, 3 = 1 + 2 in both<br>
+     *
+     * @param arrA array A
+     * @param arrB array B
+     * @param k given k
+     * @return result
+     */
     private static boolean solution1( int[] arrA, int[] arrB, int k ) {
 
+        // iterate over A and count occurring times of every number in A or in both
         int[] resultA = new int[ k ];
         java.util.Arrays.fill( resultA, 0 );
         for( int num : arrA )
             if ( num <= k )
                 resultA[ num - 1 ] = 1;
 
+        // iterate over B and count occurring times of every number in B or in both
         int[] resultB = new int[ k ];
         java.util.Arrays.fill( resultB, 0 );
         for( int num : arrB )
             if ( num <= k )
                 resultB[ num - 1 ] = 2;
 
+        // count occurring times and return result
         int[] result = new int[] { 0, 0, 0, 0 };
         for( int i=0; i < k; i++ )
             result[ resultA[ i ] + resultB[ i ] ]++;
-
-        if( result[ 0 ] != 0 )
-            return false;
-        if( result[ 1 ] + result[ 3 ] < k / 2 )
-            return false;
-        if( result[ 2 ] + result[ 3 ] < k / 2 )
-            return false;
-        return true;
+        return ( result[ 0 ] == 0 ) && ( result[ 1 ] <= k / 2 ) && ( result[ 2 ] <= k / 2 );
     }
 
 }
