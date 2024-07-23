@@ -1,5 +1,10 @@
 package Codeforces.Easy.E1000;
 
+/**
+ * Difficulty : E1000-medium<br>
+ * Algorithm : math, constructive<br>
+ * Date : 2024.7.22<br>
+ */
 public class E1968C {
 
     private enum Strategy { STRATEGY1 }
@@ -37,9 +42,15 @@ public class E1968C {
         }
     }
 
-    // easiest solution
-    // result[ i ] = arr[ i-1 ] + result[ i-1 ] * k
-    // k satisfy result[ i ] > arr[ i ]
+    /**
+     * Description : simple solution<br>
+     * Complexity : time O( N ), space O( N )<br>
+     * Hint : this solution try to find small result<br>
+     * Thought : result[ i ] = arr[ i-1 ] + result[ i-1 ] * k, which k satisfies result[ i ] > arr[ i ]
+     *
+     * @param arr given array
+     * @return result
+     */
     private static int[] solution1( int[] arr ) {
 
         int[] result = new int[ arr.length ];
