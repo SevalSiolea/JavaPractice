@@ -41,7 +41,7 @@ public class E1930B {
      * Description : simple solution, math solution<br>
      * Complexity : time O( N ), space O( 1 )<br>
      * Hint : for any x > length / 2, there does not exist y such that y is divided by x<br>
-     * Thought : construct array = { 1, n, 2, n-1, ... }<br>
+     * Idea : construct array = { 1, n, 2, n-1, ... }<br>
      *
      * @param length length of array
      * @return result

@@ -46,7 +46,7 @@ public class E1968C {
      * Description : simple solution<br>
      * Complexity : time O( N ), space O( N )<br>
      * Hint : this solution try to find small result<br>
-     * Thought : result[ i ] = arr[ i-1 ] + result[ i-1 ] * k, which k satisfies result[ i ] > arr[ i ]
+     * Idea : result[ i ] = arr[ i-1 ] + result[ i-1 ] * k, which k satisfies result[ i ] > arr[ i ]
      *
      * @param arr given array
      * @return result
