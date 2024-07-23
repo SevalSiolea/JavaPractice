@@ -1,7 +1,7 @@
 package Codeforces.Easy.E1000;
 
 /**
- * Difficulty : E1931-medium<br>
+ * Difficulty : E1000-medium<br>
  * Date : 2024.7.22<br>
  */
 public class E1931C {

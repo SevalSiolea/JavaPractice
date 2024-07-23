@@ -1,7 +1,7 @@
 package Codeforces.Easy.E1000;
 
 /**
- * Difficulty : E1930B-easy<br>
+ * Difficulty : E1000B-easy<br>
  * Algorithm : constructive, math<br>
  * Feature : you need knowledge of number theory to construct result, and programming is easy<br>
  * Solution : solution1<br>
