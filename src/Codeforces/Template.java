@@ -30,14 +30,14 @@ package Codeforces;
  * algorithm : binary search, quick select, KMP<br>
  *
  * <p>
- * Feature : describe features which make this problem different and should be thought twice
+ * Feature : describe features which make this problem different and should be thought twice<br>
  *
  * <p>
- * Solution : solution list of solutions which is valuable
- * solution : every solution and its description follows in a new line
+ * Solution : solution list of solutions which is valuable<br>
+ * solution : every solution and its description follows in a new line<br>
  *
  * <p>
- * Date : date of start this problem
+ * Date : date of start this problem<br>
  */
 public class Template {
 
