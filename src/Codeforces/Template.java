@@ -78,8 +78,8 @@ public class Template {
     /**
      * Description : brief description of this solution<br>
      * Complexity : time complexity and space complexity<br>
-     * Idea : thought of how to analyse and solve this problem using this solution<br>
      * Hint : key point of this solution<br>
+     * Idea : thought of how to analyse and solve this problem using this solution<br>
      * Steps : detailed steps of this solution<br>
      *
      * @param arr param list of one test case
