@@ -1,5 +1,12 @@
 package Codeforces.Easy.E1000;
 
+/**
+ * Difficulty : E1930B-easy<br>
+ * Algorithm : constructive, math<br>
+ * Feature : you need knowledge of number theory to construct result, and programming is easy<br>
+ * Solution : solution1<br>
+ * Date : 2024.7.22<br>
+ */
 public class E1930B {
 
     private enum Strategy { STRATEGY1 }
@@ -30,10 +37,15 @@ public class E1930B {
         }
     }
 
-    // constructive solution
-    // note for every x > length / 2, there does not exist y such that x | y
-    // just make sure for any neighboring pair of elements, there exist x > length / 2
-    // then construct array = { 1, n, 2, n-1, ... }
+    /**
+     * Description : simple solution, math solution<br>
+     * Complexity : time O( N ), space O( 1 )<br>
+     * Hint : for any x > length / 2, there does not exist y such that y is divided by x<br>
+     * Thought : construct array = { 1, n, 2, n-1, ... }<br>
+     *
+     * @param length length of array
+     * @return result
+     */
     private static int[] solution1( int length ) {
         int[] arr = new int[ length ];
         for( int i=0; i < length; i++ )
