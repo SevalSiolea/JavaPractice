@@ -1,5 +1,9 @@
 package Codeforces.Easy.E1000;
 
+/**
+ * Difficulty : E1000-medium<br>
+ * Date : 2024.7.22<br>
+ */
 public class E1941B {
 
     private enum Strategy { STRATEGY1 }
@@ -32,8 +36,13 @@ public class E1941B {
         }
     }
 
-    // easiest solution
-    // gradually reduce terminal elements of array
+    /**
+     * Description : simple solution and easiest solution<br>
+     * Complexity : time O( N ), space O( 1 )<br>
+     *
+     * @param arr given array
+     * @return result
+     */
     private static boolean solution1( int[] arr ) {
 
         for( int i=0; i < arr.length - 2; i++ ) {
@@ -45,10 +54,7 @@ public class E1941B {
                 return false;
         }
 
-        if( arr[ arr.length - 1 ] != 0 || arr[ arr.length - 2 ] != 0 )
-            return false;
-
-        return true;
+        return arr[ arr.length - 1 ] == 0 && arr[ arr.length - 2 ] == 0;
     }
 
 }
