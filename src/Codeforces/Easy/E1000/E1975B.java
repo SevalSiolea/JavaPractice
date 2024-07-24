@@ -5,7 +5,7 @@ package Codeforces.Easy.E1000;
  * Feature : think carelessly and give wrong algorithm in solution1<br>
  * Solution : solution1<br>
  * Date : 2024.7.22<br>
- *
+ * <p>
  * solution1 : think carelessly and give wrong algorithm
  */
 public class E1975B {

@@ -6,6 +6,8 @@ package Codeforces.Easy.E1000;
  * Feature : you need knowledge of number theory to construct result, and programming is easy<br>
  * Solution : solution1<br>
  * Date : 2024.7.22<br>
+ * <p>
+ * solution1 : math solution<br>
  */
 public class E1930B {
 
