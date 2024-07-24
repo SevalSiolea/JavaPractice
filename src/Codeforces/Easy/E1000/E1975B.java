@@ -65,10 +65,10 @@ public class E1975B {
     /**
      * Description : simple solution<br>
      * Complexity : time O( N ), space O( N )<br>
-     * Hint : this algorithm can be expanded to any times of factors<br>
      * Idea : iterate over given array and check whether every element can be divided by min<br>
      * Idea : construct a new array consisting of remaining elements<br>
      * Idea : repeat the above process util there does not exist factors<br>
+     * Feature : this algorithm can be expanded to any times of factors<br>
      *
      * @param arr given array
      * @param factorCount 2 factor

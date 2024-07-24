@@ -45,7 +45,7 @@ public class E1927C {
      * Description : simple solution<br>
      * Complexity : time O( N1 + N2 ), space O( N1 + N2 )<br>
      * Hint : little integers represent occurring times<br>
-     * Hint : 0 in neither, 1 in A, 2 in B, 3 = 1 + 2 in both<br>
+     * Feature : 0 in neither, 1 in A, 2 in B, 3 = 1 + 2 in both<br>
      *
      * @param arrA array A
      * @param arrB array B

@@ -81,6 +81,7 @@ public class Template {
      * Hint : key point of this solution<br>
      * Idea : thought of how to analyse and solve this problem using this solution<br>
      * Steps : detailed steps of this solution<br>
+     * Feature : valuable highlights of this solution<br>
      *
      * @param arr param list of one test case
      * @return result of one test case
