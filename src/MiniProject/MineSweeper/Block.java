@@ -25,16 +25,29 @@ public class Block {
 
     /**================================ public method ================================**/
 
+    public void displaySign() {
+        if( mine )
+            this.sign = Sign.MINE;
+        else if( mineCount == 0 )
+            this.sign = Sign.BLANK;
+        else
+            this.sign = Sign.NUMBER;
+    }
+
+    public String getSign() {
+        if( this.sign.getSign().equals( "N" ) && this.mineCount != 0 )
+            return Integer.toString( this.mineCount );
+        else
+            return this.sign.getSign();
+    }
 
     public void addMineCount() { mineCount++; }
-
-    public String getSign() { return this.sign.getSign(); }
-
-    public void setSign( Sign sign ) { this.sign = sign; }
 
     public boolean getMine() { return this.mine; }
 
     public void setMine() { this.mine = true; }
+
+    public int getMineCount() { return this.mineCount; }
 
 
 }

@@ -43,7 +43,7 @@ public class Launcher {
             } else
                 throw new RuntimeException( "Please enter right input!" );
 
-            game.startGame();
+            game.playGame();
         }
 
     }
