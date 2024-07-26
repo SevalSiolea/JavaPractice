@@ -31,15 +31,15 @@ public class Grid {
 
     public void printGrid() {
 
-        System.out.print( "   " );
+        System.out.printf( "%-4s", "" );
         for( int i = 1; i <= this.col; i++ )
-            System.out.print( i + "  " );
+            System.out.printf( "%-3d", i );
         System.out.println();
 
         for( int i = 1; i <= this.row; i++ ) {
-            System.out.print( i + "  " );
+            System.out.printf( "%-4d", i );
             for( int j = 0; j < this.col; j++ )
-                System.out.print( blocks[ i - 1 ][ j ].getSign().getSign() + "  " );
+                System.out.printf( "%-3s", blocks[ i - 1 ][ j ].getSign() );
             System.out.println();
         }
 

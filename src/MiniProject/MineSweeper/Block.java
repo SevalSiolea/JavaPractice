@@ -28,7 +28,7 @@ public class Block {
 
     public void addMineCount() { mineCount++; }
 
-    public Sign getSign() { return this.sign; }
+    public String getSign() { return this.sign.getSign(); }
 
     public void setSign( Sign sign ) { this.sign = sign; }
 
