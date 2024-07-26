@@ -11,7 +11,8 @@ public class Grid {
     private final int mineCount;
     private Block[][] blocks;
 
-    private boolean clicked;
+    private int clicked;
+    private int flagCount;
     private boolean meetMine;
 
 
@@ -25,7 +26,8 @@ public class Grid {
         this.col = col;
         this.mineCount = mineCount;
         setMines( this.mineCount );
-        this.clicked = false;
+        this.clicked = 0;
+        this.flagCount = 0;
         this.meetMine = false;
     }
 
@@ -42,7 +44,7 @@ public class Grid {
         for( int i = 1; i <= this.row; i++ ) {
             System.out.printf( "%-4d", i );
             for( int j = 0; j < this.col; j++ )
-                System.out.printf( "%-3s", blocks[ i - 1 ][ j ].getSign() );
+                System.out.printf( "%s%-3s\033[0m", blocks[ i - 1 ][ j ].getColor(), blocks[ i - 1 ][ j ].getSign() );
             System.out.println();
         }
 
@@ -53,16 +55,28 @@ public class Grid {
         row--;
         col--;
 
-        if( !this.clicked )
+        if( this.clicked == 0 && this.row * this.col != this.mineCount )
             while( this.blocks[ row ][ col ].getMine() || this.blocks[ row ][ col ].getMineCount() != 0 )
                 setMines( this.mineCount );
-        this.clicked = true;
 
         display( row, col );
+
+        if( this.clicked + this.mineCount == this.row * this.col )
+            return true;
         return this.meetMine;
     }
 
-    public boolean mark( int row, int col ) { return true; }
+    public boolean mark( int row, int col ) {
+
+        row--;
+        col--;
+
+        this.flagCount += this.blocks[ row ][ col ].markSign();
+        if( this.flagCount == this.mineCount )
+            return true;
+        else
+            return false;
+    }
 
     public void displayMines() {
         for( int i = 0; i < this.row; i++ )
@@ -74,6 +88,12 @@ public class Grid {
     public int getRow() { return this.row; }
 
     public int getCol() { return this.col; }
+
+    public int getClicked() { return this.clicked; }
+
+    public int getFlagCount() { return this.flagCount; }
+
+    public int getMineCount() { return this.mineCount; }
 
     public boolean getMeetMine() { return this.meetMine; }
 
@@ -108,6 +128,7 @@ public class Grid {
             return ;
 
         this.blocks[ row ][ col ].displaySign();
+        this.clicked++;
 
         String sign = this.blocks[ row ][ col ].getSign();
         switch( sign ) {

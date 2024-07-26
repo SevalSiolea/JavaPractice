@@ -37,18 +37,22 @@ public class Game {
         do {
             this.grid.printGrid();
             System.out.print( "Enter an operation : " );
+
             if( operate() ) {
                 if( this.grid.getMeetMine() )
-                    this.result = Result.MeetMine;
+                    this.result = Result.Lose;
+                if( this.grid.getFlagCount() == this.grid.getMineCount() )
+                    this.result = Result.Win;
+                if( this.grid.getClicked() + this.grid.getMineCount() == this.grid.getRow() * this.grid.getCol() )
+                    this.result = Result.Win;
                 break;
             }
         } while( true );
 
-        if( result == Result.MeetMine ) {
-            this.grid.displayMines();
-            this.grid.printGrid();
-            System.out.println( "Auh! You step on a mine!" );
-        }
+        this.grid.displayMines();
+        this.grid.printGrid();
+        System.out.println( this.result.getResult() );
+
     }
 
 
@@ -59,21 +63,33 @@ public class Game {
 
         java.util.Scanner scanner = new java.util.Scanner( System.in );
 
-        int row = scanner.nextInt();
-        if( row < 1 || row > this.grid.getRow() )
-            throw new RuntimeException( "Please enter right input!" );
+        java.util.ArrayList<Integer> rows = new java.util.ArrayList<>();
+        java.util.ArrayList<Integer> cols = new java.util.ArrayList<>();
+        do {
+            int row = scanner.nextInt();
+            if( row < 1 || row > this.grid.getRow() )
+                throw new RuntimeException( "Please enter right input!" );
+            rows.add( row );
 
-        int col = scanner.nextInt();
-        if( col < 1 || col > this.grid.getCol() )
-            throw new RuntimeException( "Please enter right input!" );
+            int col = scanner.nextInt();
+            if( col < 1 || col > this.grid.getCol() )
+                throw new RuntimeException( "Please enter right input!" );
+            cols.add( col );
 
+        } while( scanner.hasNextInt() );
+
+        boolean result = false;
         String operation = scanner.next();
-        if( operation.equals( "click" ) )
-            return this.grid.click( row, col );
-        else if( operation.equals( "mark" ) )
-            return this.grid.mark( row, col );
-        else
-            throw new RuntimeException( "Please enter right input!" );
+        for( int i = 0; i < rows.size(); i++ ) {
+            if( operation.equals( "click" ) )
+                result |= this.grid.click( rows.get( i ), cols.get( i ) );
+            else if( operation.equals( "mark" ) )
+                result |= this.grid.mark( rows.get( i ), cols.get( i ) );
+            else
+                throw new RuntimeException( "Please enter right input!" );
+        }
+
+        return result;
 
     }
 

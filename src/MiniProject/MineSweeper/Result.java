@@ -4,7 +4,8 @@ public enum Result {
 
 
     Continue( "Game is continuing ..." ),
-    MeetMine( "Auh! You step on a mine!" );
+    Lose( "Auh! You step on a mine!" ),
+    Win( "You win the game! Your time is : " );
 
 
     /**================================ private field ================================**/

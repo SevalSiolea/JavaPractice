@@ -20,10 +20,12 @@
 
 ​	玩家可以使用鼠标右键点击一个格子，标记这个格子埋藏地雷。
 ​	被标记的格子显示一面小旗，表示玩家认为这个格子有地雷。
-​	当被标记的格子数等于游戏设置的地雷数，并且所有被标记的格子都有地雷时，游戏胜利。无论是否所有没有地雷的格子都被显示，游戏都将胜利。
-​	当被标记的格子数不等于游戏设置的地雷数，或者不是所有被标记的格子都有地雷时，游戏继续进行。
 ​	玩家可以再次使用鼠标右键点击标记格子。该格显示一个问号，表示玩家怀疑这个格子有地雷。问号标记只是辅助玩家显示的，游戏会将问号格子视为普通格子。
 ​	玩家可以再次使用鼠标右键点击问号格子。该格去除问号标记，变成一个普通格子。
+
+​	当未显示的格子数等于游戏设置的地雷数，游戏胜利。
+​	否则，当被标记的格子数等于游戏设置的地雷数，并且所有被标记的格子都有地雷时，游戏胜利。
+​	当被标记的格子数不等于游戏设置的地雷数，或者不是所有被标记的格子都有地雷时，游戏继续进行。
 
 ​	玩家可以随时选择开始一局新的游戏。
 ​	当游戏胜利或游戏失败后，当前游戏结束，不允许玩家执行开始一局新的游戏以外的任何操作。
@@ -69,9 +71,9 @@
 ​	`Select a difficulty ( easy / medium / hard / customized ) : easy / medium / hard / customized`
 
 ​	询问玩家使用自定义难度进行游戏的设置：
-​	`Set row of game : ( an integer from 4 to 64 )`
-​	`Set col of game : ( an integer from 4 to 64 )`
-​	`Set number of mines : ( an integer from 1 to row * col )`
+​	`Set row of game ( from 1 to 64 ) : ( an integer from 4 to 64 )`
+​	`Set column of game ( from 1 to 64 ) : ( an integer from 4 to 64 )`
+​	`Set number of mines of game ( from 1 to row * col ) : ( an integer from 1 to row * col )`
 
 #### 3.2  进行游戏
 
@@ -88,7 +90,7 @@
 ​	问号格子：`?`。
 
 ​	提示玩家输入操作命令：
-​	`Enter an operation : ( row ), ( col ), click / mark `
+​	`Enter an operation : click / mark， ( row ), ( col )`
 
 #### 2.3  游戏结束
 
