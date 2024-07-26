@@ -79,11 +79,11 @@ public class Game {
         } while( scanner.hasNextInt() );
 
         boolean result = false;
-        String operation = scanner.next();
+        String operation = scanner.next().toLowerCase();
         for( int i = 0; i < rows.size(); i++ ) {
-            if( operation.equals( "click" ) )
+            if( operation.equals( "click" ) || operation.equals( "c" ) )
                 result |= this.grid.click( rows.get( i ), cols.get( i ) );
-            else if( operation.equals( "mark" ) )
+            else if( operation.equals( "mark" ) || operation.equals( "m" ) )
                 result |= this.grid.mark( rows.get( i ), cols.get( i ) );
             else
                 throw new RuntimeException( "Please enter right input!" );

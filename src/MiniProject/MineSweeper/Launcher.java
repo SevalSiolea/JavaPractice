@@ -11,7 +11,7 @@ public class Launcher {
         java.util.Scanner scanner = new java.util.Scanner( System.in );
 
         while( true ) {
-            System.out.print( "Start a new game ( yes / no ) : ");
+            System.out.print( "Start a new game ( yes / no ) : " );
             String startGame = scanner.next();
             if( startGame.equals( "no" ) )
                 break;
@@ -19,11 +19,16 @@ public class Launcher {
                 throw new RuntimeException( "Please enter right input!" );
 
             System.out.println( "Select a difficulty ( easy / medium / hard / customized ) : easy / medium / hard / customized : " );
-            Difficulty difficulty = Difficulty.valueOf( scanner.next().toUpperCase() );
+            String difficulty = scanner.next().toUpperCase();
+            difficulty = difficulty.equals( "E" ) ? "EASY" : difficulty;
+            difficulty = difficulty.equals( "M" ) ? "MEDIUM" : difficulty;
+            difficulty = difficulty.equals( "H" ) ? "HARD" : difficulty;
+            difficulty = difficulty.equals( "C" ) ? "CUSTOMIZED" : difficulty;
+
             Game game;
-            if( difficulty == Difficulty.EASY || difficulty == Difficulty.MEDIUM || difficulty == Difficulty.HARD )
-                game = new Game( difficulty );
-            else if( difficulty == Difficulty.CUSTOMIZED ) {
+            if( difficulty.equals( "EASY" ) || difficulty.equals( "MEDIUM" ) || difficulty.equals( "HARD" ) )
+                game = new Game( Difficulty.valueOf( difficulty ) );
+            else if( difficulty.equals( "CUSTOMIZED" ) ) {
                 System.out.print( "Set row of game ( from 1 to 64 ) : " );
                 int row = scanner.nextInt();
                 if( row < 1 || row > 64 )
