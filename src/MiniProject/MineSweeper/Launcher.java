@@ -20,7 +20,7 @@ public class Launcher {
     /**================================ private method ================================**/
 
 
-    private static  boolean startGame() {
+    private static boolean startGame() {
 
         java.util.Scanner scanner = new java.util.Scanner( System.in );
 
