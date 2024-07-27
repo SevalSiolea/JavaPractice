@@ -3,30 +3,25 @@ package MiniProject.MineSweeper;
 public enum Sign {
 
 
-    SIMPLE( "*", "" ),
-    BLANK( " ", "" ),
-    NUMBER( "N", "\033[32m" ),
-    MINE( "X", "\033[31m" ),
-    FLAG( "F", "\033[34m" ),
-    UNCERTAIN( "?", "\033[45m" );
+    SIMPLE( "*", Color.WHITE ),
+    BLANK( " ", Color.WHITE ),
+    NUMBER( "N", Color.YELLOW ),
+    MINE( "X", Color.RED ),
+    FLAG( "F", Color.PURPLE ),
+    UNCERTAIN( "?", Color.GREEN );
 
 
     /**================================ private field ================================**/
 
 
     private final String sign;
-    private final String color;
+    private final Color color;
 
 
     /**================================ constructor ================================**/
 
 
-    private Sign() { this( "*", "" ); }
-
-    private Sign( String sign, String color ) {
-        this.sign = sign;
-        this.color = color;
-    }
+    private Sign( String sign, Color color ) { this.sign = sign; this.color = color; }
 
 
     /**================================ public method ================================**/
@@ -34,7 +29,7 @@ public enum Sign {
 
     public String getSign() { return this.sign; }
 
-    public String getColor() { return this.color; }
+    public String getColor() { return this.color.getColor(); }
 
 
 }

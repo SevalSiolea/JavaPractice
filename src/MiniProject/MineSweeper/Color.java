@@ -1,0 +1,34 @@
+package MiniProject.MineSweeper;
+
+public enum Color {
+
+
+    WHITE( "" ),
+    RED( "\033[31m" ),
+    GREEN( "\033[32m" ),
+    YELLOW( "\033[33m" ),
+    BLUE( "\033[34m" ),
+    PURPLE( "\033[35m" ),
+    CYAN( "\033[36m" ),
+    GREY( "\033[37m" );
+
+
+    /**================================ private field ================================**/
+
+
+    private final String color;
+
+
+    /**================================ constructor ================================**/
+
+
+    private Color(String color) { this.color = color; }
+
+
+    /**================================ public method ================================**/
+
+
+    public String getColor() { return this.color; }
+
+
+}

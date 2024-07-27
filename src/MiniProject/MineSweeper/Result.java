@@ -11,19 +11,19 @@ public enum Result {
     /**================================ private field ================================**/
 
 
-    private final String result;
+    private final String message;
 
 
     /**================================ constructor ================================**/
 
 
-    private Result( String result ) { this.result = result; }
+    private Result( String message ) { this.message = message; }
 
 
     /**================================ public method ================================**/
 
 
-    public String getResult() { return this.result; }
+    public String getMessage() { return this.message; }
 
 
 }
