@@ -51,7 +51,7 @@ public class Game {
 
         this.grid.displayMines();
         this.grid.printGrid();
-        System.out.println( this.result.getResult() );
+        System.out.println( this.result.getMessage() );
 
     }
 
