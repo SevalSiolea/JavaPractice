@@ -5,7 +5,9 @@ public enum Result {
 
     CONTINUE( "Game is continuing ..." ),
     LOSE( "Auh! You step on a mine!" ),
-    WIN( "You win the game! Your time is : " );
+    WIN( "You win the game! Your time is : " ),
+    RESTART( "" ),
+    End( "" );
 
 
     /**===============================================================================**/

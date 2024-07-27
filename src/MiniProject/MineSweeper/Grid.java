@@ -24,8 +24,6 @@ public class Grid {
     /**=============================================================================**/
 
 
-    public Grid() { this( 16, 16, 32 ); }
-
     public Grid( int row, int col, int mineCount ) {
         this.row = row;
         this.col = col;
@@ -51,45 +49,41 @@ public class Grid {
     public void printGrid() {
 
         System.out.printf( "%-4s", "" );
-        for( int i = 1; i <= this.col; i++ )
-            System.out.printf( "%-3d", i );
+        for( int i = 0; i < this.col; i++ )
+            System.out.printf( "%-3d", i+1 );
         System.out.println();
 
-        for( int i = 1; i <= this.row; i++ ) {
-            System.out.printf( "%-4d", i );
+        for( int i = 0; i < this.row; i++ ) {
+            System.out.printf( "%-4d", i+1 );
             for( int j = 0; j < this.col; j++ )
-                System.out.printf( "%s%-3s\033[0m", blocks[ i - 1 ][ j ].getColor(), blocks[ i - 1 ][ j ].getSign() );
+                System.out.printf( "%s%-3s\033[0m", blocks[ i ][ j ].getColor(), blocks[ i ][ j ].getSign() );
             System.out.println();
         }
 
     }
 
-    public boolean click( int row, int col ) {
+    public void click( int row, int col ) {
 
         row--;
         col--;
 
         if( this.clicked == 0 && this.row * this.col != this.mineCount )
-            while( this.blocks[ row ][ col ].getMine() || this.blocks[ row ][ col ].getMineCount() != 0 )
+            while( this.blocks[ row ][ col ].getMine() || this.blocks[ row ][ col ].getAroundMineCount() != 0 )
                 setMines( this.mineCount );
+
+        if( this.blocks[ row ][ col ].getMine() ) {
+            this.blocks[ row ][ col ].displaySign();
+            this.clicked++;
+            this.meetMine = true;
+            return;
+        }
 
         display( row, col );
 
-        if( this.clicked + this.mineCount == this.row * this.col )
-            return true;
-        return this.meetMine;
     }
 
-    public boolean mark( int row, int col ) {
-
-        row--;
-        col--;
-
-        this.flagCount += this.blocks[ row ][ col ].markSign();
-        if( this.flagCount == this.mineCount )
-            return true;
-        else
-            return false;
+    public void mark( int row, int col ) {
+        this.flagCount += this.blocks[ --row ][ --col ].markSign();
     }
 
     public void displayMines() {
@@ -135,39 +129,32 @@ public class Grid {
             }
 
             blocks[ row ][ col ].setMine();
-            addMineCount( row, col );
+            addAroundMineCounts( row, col );
         }
 
     }
 
     private void display( int row, int col ) {
 
-        if( !this.blocks[ row ][ col ].getSign().equals( "*" ) )
-            return ;
+        if( this.blocks[ row ][ col ].getMine() ) return;
+        if( !this.blocks[ row ][ col ].getSign().equals( "*" ) ) return;
 
         this.blocks[ row ][ col ].displaySign();
         this.clicked++;
 
-        String sign = this.blocks[ row ][ col ].getSign();
-        switch( sign ) {
-            case "X":
-                this.meetMine = true;
-                break;
-            case "N":
-                break;
-            case " ":
-                displayAround( row, col );
-        }
+        if( this.blocks[ row ][ col ].getSign().equals( " " ) )
+            displayAround( row, col );
 
     }
 
     /**----------------------------------------------------------------**/
 
-    private void addMineCount( int row, int col ) {
+    private void addAroundMineCounts( int row, int col ) {
         for( int i = -1; i <= 1; i++ )
             for( int j = -1; j <= 1; j++ )
-                if( row + i >= 0 && row + i < this.row && col + j >= 0 && col + j < this.col )
-                    blocks[ row + i ][ col + j ].addMineCount();
+                if( i != 0 || j != 0 )
+                    if( row + i >= 0 && row + i < this.row && col + j >= 0 && col + j < this.col )
+                        blocks[ row + i ][ col + j ].addAroundMineCount();
     }
 
     private void displayAround( int row, int col ) {

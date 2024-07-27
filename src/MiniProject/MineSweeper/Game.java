@@ -21,15 +21,17 @@ public class Game {
     /**=============================================================================**/
 
 
-    public Game() { this( Difficulty.MEDIUM ); }
-
     public Game( Difficulty difficulty ) {
+        assert difficulty != Difficulty.CUSTOMIZED;
+
         this.difficulty = difficulty;
         this.grid = new Grid( this.difficulty.getRow(), this.difficulty.getCol(), this.difficulty.getMineCount() );
         this.result = Result.CONTINUE;
     }
 
     public Game( Difficulty difficulty, int row, int col, int mineCount ) {
+        assert difficulty == Difficulty.CUSTOMIZED;
+
         this.difficulty = difficulty;
         this.grid = new Grid( row, col, mineCount );
         this.result = Result.CONTINUE;
@@ -42,26 +44,13 @@ public class Game {
 
 
     public void playGame() {
-
         do {
             this.grid.printGrid();
             System.out.print( "Enter an operation : " );
-
-            if( operate() ) {
-                if( this.grid.getMeetMine() )
-                    this.result = Result.LOSE;
-                if( this.grid.getFlagCount() == this.grid.getMineCount() )
-                    this.result = Result.WIN;
-                if( this.grid.getClicked() + this.grid.getMineCount() == this.grid.getRow() * this.grid.getCol() )
-                    this.result = Result.WIN;
-                break;
-            }
-        } while( true );
-
-        this.grid.displayMines();
-        this.grid.printGrid();
-        System.out.println( this.result.getMessage() );
-
+            operate();
+            judgeResult();
+        } while( result == Result.CONTINUE );
+        endGame();
     }
 
 
@@ -70,38 +59,47 @@ public class Game {
     /**================================================================================**/
 
 
-    private boolean operate() {
+    private void operate() {
 
         java.util.Scanner scanner = new java.util.Scanner( System.in );
 
-        java.util.ArrayList<Integer> rows = new java.util.ArrayList<>();
-        java.util.ArrayList<Integer> cols = new java.util.ArrayList<>();
-        do {
-            int row = scanner.nextInt();
-            if( row < 1 || row > this.grid.getRow() )
-                throw new RuntimeException( "Please enter right input!" );
-            rows.add( row );
-
-            int col = scanner.nextInt();
-            if( col < 1 || col > this.grid.getCol() )
-                throw new RuntimeException( "Please enter right input!" );
-            cols.add( col );
-
-        } while( scanner.hasNextInt() );
-
-        boolean result = false;
-        String operation = scanner.next().toLowerCase();
-        for( int i = 0; i < rows.size(); i++ ) {
-            if( operation.equals( "click" ) || operation.equals( "c" ) )
-                result |= this.grid.click( rows.get( i ), cols.get( i ) );
-            else if( operation.equals( "mark" ) || operation.equals( "m" ) )
-                result |= this.grid.mark( rows.get( i ), cols.get( i ) );
-            else
-                throw new RuntimeException( "Please enter right input!" );
+        String command = scanner.nextLine();
+        if( command.equals( "Restart a new game" ) ) {
+            result = Result.RESTART;
+            return;
+        } else if( command.equals( "End game" ) ) {
+            result = Result.End;
+            return;
         }
+        String[] commands = command.split( " " );
 
-        return result;
+        String operation = commands[ 0 ];
+        int row = Integer.parseInt( commands[ 1 ] );
+        int col = Integer.parseInt( commands[ 2 ] );
+        if( operation.equals( "click" ) )
+            grid.click( row, col );
+        else if( operation.equals( "mark" ) )
+            grid.mark( row, col );
+        else
+            throw new RuntimeException( "Please enter right input!" );
 
+    }
+
+    private void judgeResult() {
+        if( this.grid.getMeetMine() )
+            this.result = Result.LOSE;
+        if( this.grid.getFlagCount() == this.grid.getMineCount() )
+            this.result = Result.WIN;
+        if( this.grid.getClicked() + this.grid.getMineCount() == this.grid.getRow() * this.grid.getCol() )
+            this.result = Result.WIN;
+    }
+
+    private void endGame() {
+        if( result != Result.RESTART && result != Result.End ) {
+            this.grid.displayMines();
+            this.grid.printGrid();
+            System.out.println( this.result.getMessage() );
+        }
     }
 
 

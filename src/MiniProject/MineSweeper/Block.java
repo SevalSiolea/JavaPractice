@@ -12,7 +12,7 @@ public class Block {
 
     private boolean mine;
     private Sign sign;
-    private int mineCount;
+    private int aroundMineCount;
 
 
     /**=============================================================================**/
@@ -20,12 +20,10 @@ public class Block {
     /**=============================================================================**/
 
 
-    public Block() { this( false ); }
-
-    public Block( boolean mine ) {
-        this.mine = mine;
+    public Block() {
+        this.mine = false;
         this.sign = Sign.SIMPLE;
-        this.mineCount = 0;
+        this.aroundMineCount = 0;
     }
 
 
@@ -37,25 +35,21 @@ public class Block {
     public void displaySign() {
         if( mine )
             this.sign = Sign.MINE;
-        else if( mineCount == 0 )
-            this.sign = Sign.BLANK;
-        else
-            this.sign = Sign.NUMBER;
+        else {
+            if ( aroundMineCount == 0 )
+                this.sign = Sign.BLANK;
+            else
+                this.sign = Sign.NUMBER;
+        }
     }
 
     public int markSign() {
         if( this.sign == Sign.SIMPLE ) {
             this.sign = Sign.FLAG;
-            if( this.mine )
-                return 1;
-            else
-                return 0;
+            return this.mine ? 1 : 0;
         } else if( this.sign == Sign.FLAG ) {
             this.sign = Sign.UNCERTAIN;
-            if( this.mine )
-                return -1;
-            else
-                return 0;
+            return this.mine ? -1 : 0;
         } else if( this.sign == Sign.UNCERTAIN ) {
             this.sign = Sign.SIMPLE;
             return 0;
@@ -66,19 +60,19 @@ public class Block {
     /**----------------------------------------------------------------**/
 
     public String getSign() {
-        if( this.sign.getSign().equals( "N" ) && this.mineCount != 0 )
-            return Integer.toString( this.mineCount );
+        if( this.sign.getSign().equals( "N" ) && this.aroundMineCount != 0 )
+            return Integer.toString( this.aroundMineCount );
         else
             return this.sign.getSign();
     }
 
-    public void addMineCount() { mineCount++; }
+    public void addAroundMineCount() { aroundMineCount++; }
 
     public boolean getMine() { return this.mine; }
 
     public void setMine() { this.mine = true; }
 
-    public int getMineCount() { return this.mineCount; }
+    public int getAroundMineCount() { return this.aroundMineCount; }
 
     public String getColor() { return this.sign.getColor(); }
 

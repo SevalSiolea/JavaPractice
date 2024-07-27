@@ -7,7 +7,7 @@ public enum Sign {
     BLANK( " ", Color.WHITE ),
     NUMBER( "N", Color.YELLOW ),
     MINE( "X", Color.RED ),
-    FLAG( "F", Color.PURPLE ),
+    FLAG( "F", Color.BLUE ),
     UNCERTAIN( "?", Color.GREEN );
 
 
