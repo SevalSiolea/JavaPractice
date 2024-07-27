@@ -1,5 +1,8 @@
 package MiniProject.MineSweeper;
 
+import MiniProject.MineSweeper.Enum.Difficulty;
+import MiniProject.MineSweeper.Enum.Result;
+
 public class Game {
 
 

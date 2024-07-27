@@ -1,5 +1,7 @@
 package MiniProject.MineSweeper;
 
+import MiniProject.MineSweeper.Enum.Sign;
+
 public class Block {
 
 

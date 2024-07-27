@@ -1,4 +1,4 @@
-package MiniProject.MineSweeper;
+package MiniProject.MineSweeper.Enum;
 
 public enum Color {
 
