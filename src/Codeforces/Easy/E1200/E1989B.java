@@ -1,7 +1,7 @@
 package Codeforces.Easy.E1200;
 
 /**
- * Difficulty : E1100-medium<br>
+ * Difficulty : E1200-medium<br>
  * Date : 2024.7.27<br>
  */
 public class E1989B {
