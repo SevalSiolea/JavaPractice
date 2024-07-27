@@ -70,7 +70,7 @@ public class Launcher {
         int row = scanner.nextInt();
         System.out.print( "Set col of the game ( from 1 to 32 ) : " );
         int col = scanner.nextInt();
-        System.out.print( "Set number of mines ( from 1 to row * col ) " );
+        System.out.print( "Set number of mines ( from 1 to row * col ) : " );
         int mineCount = scanner.nextInt();
 
         return new Game( Difficulty.CUSTOMIZED, row, col, mineCount );
