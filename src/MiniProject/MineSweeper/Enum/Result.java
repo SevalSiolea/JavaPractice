@@ -3,9 +3,9 @@ package MiniProject.MineSweeper.Enum;
 public enum Result {
 
 
-    Continue( "Game is continuing ..." ),
-    Lose( "Auh! You step on a mine!" ),
-    Win( "You win the game! Your time is : " );
+    CONTINUE( "Game is continuing ..." ),
+    LOSE( "Auh! You step on a mine!" ),
+    WIN( "You win the game! Your time is : " );
 
 
     /**===============================================================================**/

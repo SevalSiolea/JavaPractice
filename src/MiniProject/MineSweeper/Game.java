@@ -26,13 +26,13 @@ public class Game {
     public Game( Difficulty difficulty ) {
         this.difficulty = difficulty;
         this.grid = new Grid( this.difficulty.getRow(), this.difficulty.getCol(), this.difficulty.getMineCount() );
-        this.result = Result.Continue;
+        this.result = Result.CONTINUE;
     }
 
     public Game( Difficulty difficulty, int row, int col, int mineCount ) {
         this.difficulty = difficulty;
         this.grid = new Grid( row, col, mineCount );
-        this.result = Result.Continue;
+        this.result = Result.CONTINUE;
     }
 
 
@@ -49,11 +49,11 @@ public class Game {
 
             if( operate() ) {
                 if( this.grid.getMeetMine() )
-                    this.result = Result.Lose;
+                    this.result = Result.LOSE;
                 if( this.grid.getFlagCount() == this.grid.getMineCount() )
-                    this.result = Result.Win;
+                    this.result = Result.WIN;
                 if( this.grid.getClicked() + this.grid.getMineCount() == this.grid.getRow() * this.grid.getCol() )
-                    this.result = Result.Win;
+                    this.result = Result.WIN;
                 break;
             }
         } while( true );
