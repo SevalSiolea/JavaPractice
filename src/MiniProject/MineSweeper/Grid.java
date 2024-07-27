@@ -9,7 +9,8 @@ public class Grid {
     private final int row;
     private final int col;
     private final int mineCount;
-    private Block[][] blocks;
+
+    private final Block[][] blocks;
 
     private int clicked;
     private int flagCount;
@@ -25,7 +26,13 @@ public class Grid {
         this.row = row;
         this.col = col;
         this.mineCount = mineCount;
+
+        this.blocks = new Block[ this.row ][ this.col ];
+        for( int i = 0; i < this.row; i++ )
+            for( int j = 0; j < this.col; j++ )
+                this.blocks[ i ][ j ] = new Block();
         setMines( this.mineCount );
+
         this.clicked = 0;
         this.flagCount = 0;
         this.meetMine = false;
@@ -33,6 +40,7 @@ public class Grid {
 
 
     /**================================ public method ================================**/
+
 
     public void printGrid() {
 
@@ -102,7 +110,6 @@ public class Grid {
 
     private void setMines( int mineCount ) {
 
-        this.blocks = new Block[ this.row ][ this.col ];
         for( int i = 0; i < this.row; i++ )
             for( int j = 0; j < this.col; j++ )
                 this.blocks[ i ][ j ] = new Block();
