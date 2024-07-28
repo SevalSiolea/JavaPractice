@@ -1,5 +1,9 @@
 package Codeforces.Easy.E1000;
 
+/**
+ * Difficulty : E1000-easy<br>
+ * Date : 2024.7.13<br>
+ */
 public class E1985C {
 
     private enum Strategy { STRATEGY1, STRATEGY2 }
@@ -13,9 +17,9 @@ public class E1985C {
         int[] prefixes = new int[ testCount ];
         for( int i=0; i < testCount; i++ ) {
             int arrLength = scanner.nextInt();
-            long[] arr = new long[ arrLength ];
+            int[] arr = new int[ arrLength ];
             for( int j=0; j < arrLength; j++ )
-                arr[ j ] = scanner.nextLong();
+                arr[ j ] = scanner.nextInt();
             prefixes[ i ] = solution( strategy, arr );
         }
 
@@ -23,7 +27,7 @@ public class E1985C {
             System.out.println( prefixes[ i ] );
     }
 
-    private static int solution( Strategy strategy, long[] arr ) {
+    private static int solution( Strategy strategy, int[] arr ) {
         switch( strategy ) {
             case STRATEGY1:
                 return solution1( arr );
@@ -34,10 +38,17 @@ public class E1985C {
         }
     }
 
-    // easiest solution by traversing every prefix array
-    private static int solution1( long[] arr ) {
+    /**
+     * Description : simple solution, complex solution<br>
+     * Complexity : time O( N * N ), space O( N )<br>
+     * Feature : use double loop so spend too much time<br>
+     *
+     * @param arr given array
+     * @return result
+     */
+    private static int solution1( int[] arr ) {
 
-        int prefix = 0;
+        int prefixCount = 0;
         for( int i=0; i < arr.length; i++ ) {
             long max = 0;
             long sum = 0;
@@ -47,17 +58,23 @@ public class E1985C {
                     max = arr[ j ];
             }
             if( sum == 2 * max )
-                prefix++;
+                prefixCount++;
         }
 
-        return prefix;
+        return prefixCount;
     }
 
-    // optimize based on easiest solution
-    // loop nesting layers decrease from 2 to 1
-    private static int solution2( long[] arr ) {
+    /**
+     * Description : simple solution<br>
+     * Complexity : time O( N ), space O( N )<br>
+     * Feature : decrease one loop nesting layer compared to solution1<br>
+     *
+     * @param arr given array
+     * @return result
+     */
+    private static int solution2( int[] arr ) {
 
-        int prefix = 0;
+        int prefixCount = 0;
         long sum = 0;
         long max = 0;
         for( int i=0; i < arr.length; i++ ) {
@@ -66,10 +83,10 @@ public class E1985C {
                 max = arr[ i ];
 
             if( sum == 2 * max )
-                prefix++;
+                prefixCount++;
         }
 
-        return prefix;
+        return prefixCount;
     }
 
 }
