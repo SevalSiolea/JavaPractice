@@ -1,5 +1,12 @@
 package Codeforces.Easy.E1100;
 
+/**
+ * Difficulty : E1100-hard<br>
+ * Algorithm : constructive, bitwise operation<br>
+ * Solution : solution1<br>
+ * Feature : a clever constructive algorithm<br>
+ * Date : 2024.7.25<br>
+ */
 public class E1957B {
 
     private enum Strategy { STRATEGY1 }
@@ -33,6 +40,33 @@ public class E1957B {
         }
     }
 
+    /**
+     * Description : clever solution, constructive solution<br>
+     * Complexity : time O( N ), space O( N )<br>
+     *
+     * Idea : if length == 1, then result is sum<br>
+     * Idea : else, consider construct 2 num, they have most 1 and other elements are all 0<br>
+     * Idea : we can construct by iterate over binary form of sum from back to front<br>
+     *
+     * Idea : in the first situation, we never get a carry<br>
+     * Idea : if sum[ i ] is 1, set num1[ i ] = 0 and num2[ i ] = 1<br>
+     * Idea : if sum[ i ] is 0, set num1[ i ] = num2[ i ] = 1<br>
+     * Idea : then generate a carry and go to the second situation<br>
+     *
+     * Idea : in the second situation, we always get a carry<br>
+     * Idea : if sum[ i ] is 1, set num1[ i ] = 1 and num2[ i ] = 1<br>
+     * Idea : if sum[ i ] is 0, set num1[ i ] = 0 and num2[ i ] = 1<br>
+     * Idea : note if sum[ i ] is 1 and it is the highest digit<br>
+     * Idea : we need set num1[ i ] = num1[ i ] = 0<br>
+     *
+     * Idea : if binary form of sum has n digits<br>
+     * Idea : num2 has n-1 of 1 unless all digits of sum are 1<br>
+     * Idea : it can be proved the perfect result<br>
+     *
+     * @param length length of array
+     * @param sum given sum
+     * @return result
+     */
     private static int[] solution1( int length, int sum ) {
 
         if( length == 1 )
@@ -85,8 +119,8 @@ public class E1957B {
 
     private static int countNum( int[] bitArr ) {
         int num = 0;
-        for( int i=0; i < bitArr.length; i++ ) {
-            num += bitArr[ i ];
+        for ( int bit : bitArr ) {
+            num += bit;
             num <<= 1;
         }
         num >>= 1;
