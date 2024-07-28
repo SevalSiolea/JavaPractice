@@ -1,7 +1,7 @@
 package Codeforces.Easy.E1200;
 
 /**
- * Difficulty : E1100-difficult<br>
+ * Difficulty : E1100-hard<br>
  * Algorithm : math<br>
  * Solution : solution1<br>
  * Feature : use mod theory to prove algorithm<br>

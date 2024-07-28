@@ -1,7 +1,7 @@
 package Codeforces.Easy.E1100;
 
 /**
- * Difficulty : E1100-difficult<br>
+ * Difficulty : E1100-hard<br>
  * Algorithm : constructive, math<br>
  * Feature : use 4-base to constructive a clever result<br>
  * Solution : solution1<br>

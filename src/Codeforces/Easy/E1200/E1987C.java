@@ -1,7 +1,7 @@
 package Codeforces.Easy.E1200;
 
 /**
- * Difficulty : E1200-difficulty<br>
+ * Difficulty : E1200-hard<br>
  * Algorithm : simulate<br>
  * Solution : solution2<br>
  * Feature : analysis of solution2 is difficult<br>
