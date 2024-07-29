@@ -56,7 +56,7 @@ public class Grid {
         for( int i = 0; i < this.row; i++ ) {
             System.out.printf( "%-4d", i+1 );
             for( int j = 0; j < this.col; j++ )
-                System.out.printf( "%s%-3s\033[0m", blocks[ i ][ j ].getColor(), blocks[ i ][ j ].getSign() );
+                System.out.printf( "%s%-3s\033[0m", this.blocks[ i ][ j ].getColor(), this.blocks[ i ][ j ].getSign() );
             System.out.println();
         }
 
@@ -123,12 +123,12 @@ public class Grid {
             int row = (int) Math.floor( Math.random() * this.row );
             int col = (int) Math.floor( Math.random() * this.col );
 
-            if( blocks[ row ][ col ].getMine() ) {
+            if( this.blocks[ row ][ col ].getMine() ) {
                 i--;
                 continue;
             }
 
-            blocks[ row ][ col ].setMine();
+            this.blocks[ row ][ col ].setMine();
             addAroundMineCounts( row, col );
         }
 
@@ -154,7 +154,7 @@ public class Grid {
             for( int j = -1; j <= 1; j++ )
                 if( i != 0 || j != 0 )
                     if( row + i >= 0 && row + i < this.row && col + j >= 0 && col + j < this.col )
-                        blocks[ row + i ][ col + j ].addAroundMineCount();
+                        this.blocks[ row + i ][ col + j ].addAroundMineCount();
     }
 
     private void displayAround( int row, int col ) {

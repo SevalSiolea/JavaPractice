@@ -33,10 +33,10 @@ public class Block {
 
 
     public void displaySign() {
-        if( mine )
+        if( this.mine )
             this.sign = Sign.MINE;
         else {
-            if ( aroundMineCount == 0 )
+            if ( this.aroundMineCount == 0 )
                 this.sign = Sign.BLANK;
             else
                 this.sign = Sign.NUMBER;
@@ -66,7 +66,7 @@ public class Block {
             return this.sign.getSign();
     }
 
-    public void addAroundMineCount() { aroundMineCount++; }
+    public void addAroundMineCount() { this.aroundMineCount++; }
 
     public boolean getMine() { return this.mine; }
 

@@ -48,7 +48,7 @@ public class Game {
             System.out.print( "Enter an operation ( click / mark ): " );
             operate();
             judgeResult();
-        } while( result == Result.CONTINUE );
+        } while( this.result == Result.CONTINUE );
         endGame();
     }
 
@@ -61,7 +61,7 @@ public class Game {
     private void operate() {
 
         String command = getCommand();
-        if( result == Result.RESTART || result == Result.End ) return;
+        if( this.result == Result.RESTART || this.result == Result.End ) return;
         String[] commands = command.split( " " );
 
         int[] blockCounts = getBlockCounts( commands );
@@ -96,7 +96,7 @@ public class Game {
     }
 
     private void endGame() {
-        if( result != Result.RESTART && result != Result.End ) {
+        if( this.result != Result.RESTART && this.result != Result.End ) {
             this.grid.displayMines();
             this.grid.printGrid();
             System.out.println( this.result.getMessage() );
@@ -114,14 +114,14 @@ public class Game {
                 System.out.println( Message.RESTART.getMessage() );
                 command = scanner.nextLine().trim().toLowerCase();
                 if( command.equals( "restart a new game" ) || command.equals( "r" ) ) {
-                    result = Result.RESTART;
+                    this.result = Result.RESTART;
                     break;
                 }
             } else if( command.equals( "end game" ) || command.equals( "e" ) ) {
                 System.out.println( Message.ENDGAME.getMessage() );
                 command = scanner.nextLine().trim().toLowerCase();
                 if( command.equals( "end game" ) || command.equals( "e" ) ) {
-                    result = Result.End;
+                    this.result = Result.End;
                     break;
                 }
             } else
