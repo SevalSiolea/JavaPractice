@@ -7,7 +7,8 @@ public enum Result {
     LOSE( "Auh! You step on a mine!" ),
     WIN( "You win the game! Your time is : " ),
     RESTART( "" ),
-    End( "" );
+    End( "" ),
+    ;
 
 
     /**===============================================================================**/

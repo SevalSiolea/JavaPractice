@@ -8,7 +8,8 @@ public enum Sign {
     NUMBER( "N", Color.YELLOW ),
     MINE( "X", Color.RED ),
     FLAG( "F", Color.BLUE ),
-    UNCERTAIN( "?", Color.GREEN );
+    UNCERTAIN( "?", Color.GREEN ),
+    ;
 
 
     /**===============================================================================**/
