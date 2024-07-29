@@ -171,7 +171,7 @@ public class Game {
                 }
                 else {
                     int col = Integer.parseInt( commands[ i ] );
-                    if( col <= 0 || col > this.grid.getRow() ) {
+                    if( col <= 0 || col > this.grid.getCol() ) {
                         System.out.println( Message.FALSECOL.getMessage() );
                         return null;
                     }
