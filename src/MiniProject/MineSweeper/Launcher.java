@@ -32,9 +32,9 @@ public class Launcher {
 
         System.out.print( "Start a new game ( yes / no ) : " );
         String startGame = scanner.next().toLowerCase();
-        if( startGame.equals( "no" ) )
+        if( startGame.equals( "no" ) || startGame.equals( "n" ))
             return false;
-        else if( startGame.equals( "yes" ) )
+        else if( startGame.equals( "yes" ) || startGame.equals( "y" ))
             return true;
         else
             throw new RuntimeException( "Please enter right input!" );

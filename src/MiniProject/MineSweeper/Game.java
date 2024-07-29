@@ -63,25 +63,31 @@ public class Game {
 
         java.util.Scanner scanner = new java.util.Scanner( System.in );
 
-        String command = scanner.nextLine();
-        if( command.equals( "Restart a new game" ) ) {
+        String command = scanner.nextLine().trim().toLowerCase();
+        if( command.equals( "restart a new game" ) || command.equals( "r" ) ) {
             result = Result.RESTART;
             return;
-        } else if( command.equals( "End game" ) ) {
+        } else if( command.equals( "end game" ) || command.equals( "e" )) {
             result = Result.End;
             return;
         }
         String[] commands = command.split( " " );
 
-        String operation = commands[ 0 ];
-        int row = Integer.parseInt( commands[ 1 ] );
-        int col = Integer.parseInt( commands[ 2 ] );
-        if( operation.equals( "click" ) )
-            grid.click( row, col );
-        else if( operation.equals( "mark" ) )
-            grid.mark( row, col );
-        else
-            throw new RuntimeException( "Please enter right input!" );
+        for( int i=0; i<commands.length; i++ ) {
+            if( commands[ i ].equals( "click" ) || commands[ i ].equals( "mark" ) || commands[ i ].equals( "c" ) || commands[ i ].equals( "m" )) {
+                String operation = commands[ i ];
+                while( i+1 < commands.length && !commands[ i+1 ].equals( "click" ) && !commands[ i+1 ].equals( "mark" ) && !commands[ i+1 ].equals( "c" ) && !commands[ i+1 ].equals( "m" ) ) {
+                    int row = Integer.parseInt( commands[ ++i ] );
+                    int col = Integer.parseInt( commands[ ++i ] );
+                    if( operation.equals( "click" ) || operation.equals( "c" ) )
+                        grid.click( row, col );
+                    else if( operation.equals( "mark" ) || operation.equals( "m" ) )
+                        grid.mark( row, col );
+                    else
+                        throw new RuntimeException( "Please enter right input!" );
+                }
+            }
+        }
 
     }
 
