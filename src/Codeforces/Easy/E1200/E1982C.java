@@ -2,7 +2,12 @@ package Codeforces.Easy.E1200;
 
 /**
  * Difficulty : E1200-hard<br>
+ * Algorithm : greedy, dynamic programming, two pointers<br>
+ * Solution : solution1, solution4<br>
  * Date : 2024.7.31<br>
+ *
+ * Solution1 : greedy algorithm<br>
+ * Solution4 : dynamic programming algorithm<br>
  */
 public class E1982C {
 
@@ -11,7 +16,7 @@ public class E1982C {
     public static void main( String[] args ) {
 
         java.util.Scanner scanner = new java.util.Scanner( System.in );
-        Strategy strategy = Strategy.STRATEGY4;
+        Strategy strategy = Strategy.STRATEGY1;
 
         int testCount = scanner.nextInt();
         int[] results = new int[ testCount ];
@@ -44,6 +49,43 @@ public class E1982C {
         }
     }
 
+    /**
+     * Description : greedy solution<br>
+     * Complexity : time O( N ), space O( N )<br>
+     *
+     * Idea : greedy algorithm is easy<br>
+     * Idea : use two pointers to find rounds one by one<br>
+     * Idea : however, the correctness is difficult to prove<br>
+     *
+     * Idea : use two pointers start and end to find rounds one by one<br>
+     * Idea : set start = end = 0, current sum = arr[ start ]<br>
+     * Idea : increase end until sum >= min<br>
+     * Idea : if sum <= max, we find the round<br>
+     * Idea : else, increase start until sum <= max<br>
+     * Idea : if sum < min then, we must increase end again<br>
+     * Idea : increase end and start until we find the round<br>
+     * Idea : after we find the round, set start = end = end + 1,<br>
+     * Idea : continuously find the next round until end of the array<br>
+     *
+     * Idea : then prove the correctness of the algorithm<br>
+     * Idea : consider a certain round<br>
+     * Idea : we cant increase rounds by moving the round forwards<br>
+     * Idea : because we cant use idx such that idx < end as end of the round<br>
+     * Idea : any idx does not satisfy the requirements because sum is too big or too small<br>
+     * Idea : sum is too big when increasing end to make sum >= min firstly<br>
+     * Idea : at the time, sum > max<br>
+     * Idea : sum is too small when increasing start to make sum < max firstly<br>
+     * Idea : at the time, sum < min<br>
+     * Idea : therefore, we cant find a start idx to make the certain end idx satisfy the requirements<br>
+     * Idea : thus there does not exist another round before the round<br>
+     * Idea : we cant increase rounds by moving the round backwards neither<br>
+     * Idea : because there does not exist any round between the round and the next round<br>
+     *
+     * @param arr given array
+     * @param min min of sum
+     * @param max max of sum
+     * @return result
+     */
     private static int solution1( int[] arr, int min, int max ) {
 
         int round = 0;
@@ -75,6 +117,20 @@ public class E1982C {
 
     }
 
+    /**
+     * Description : simple solution<br>
+     * Complexity : time O( N^2 ), space O( N )<br>
+     * Feature : brute force algorithm, spend too much time<br>
+     *
+     * Idea : iterate over the given array to find end of round for every idx<br>
+     * Idea : if there does not exist a round, set ends[ idx ] = -1<br>
+     * Idea : finally, use dynamic programming to iterate over rounds reversely<br>
+     *
+     * @param arr given array
+     * @param min min of sum
+     * @param max max of sum
+     * @return result
+     */
     private static int solution2( int[] arr, int min, int max ) {
 
         int[] ends = new int[ arr.length ];
@@ -96,6 +152,20 @@ public class E1982C {
         return rounds[ 0 ];
     }
 
+    /**
+     * Description : simple solution<br>
+     * Complexity : time O( N^2 ), space O( 1 )<br>
+     * Feature : brute force algorithm, spend too much time<br>
+     *
+     * Idea : solution3 is similar to solution2<br>
+     * Idea : but we iterate over rounds from front to back<br>
+     * Idea : steps is a little different, but essence is the same<br>
+     *
+     * @param arr given array
+     * @param min min of sum
+     * @param max max of sum
+     * @return result
+     */
     private static int solution3( int[] arr, int min, int max ) {
 
         int[] rounds = new int[ arr.length + 1 ];
@@ -114,6 +184,25 @@ public class E1982C {
         return rounds[ rounds.length - 1 ];
     }
 
+    /**
+     * Description : dynamic programming solution<br>
+     * Complexity : time O( N * logN ), space O( N )<br>
+     * Feature : dynamic programming and two pointers<br>
+     *
+     * Idea : solution4 optimize solution2 and solution3<br>
+     * Idea : use dynamic programming to iterate over rounds<br>
+     * Idea : however, use two pointers to iterate over the given array<br>
+     * Idea : do less repeated work to decrease time complexity<br>
+     *
+     * Idea : essence of solution4 is different<br>
+     * Idea : find answer of subquestion when iterating is essence of dynamic programming<br>
+     * Idea : solution2 and solution3 is just simple iterating<br>
+     *
+     * @param arr given array
+     * @param min min of sum
+     * @param max max of sum
+     * @return result
+     */
     private static int solution4( int[] arr, int min, int max ) {
 
         int[] rounds = new int[ arr.length + 1 ];
