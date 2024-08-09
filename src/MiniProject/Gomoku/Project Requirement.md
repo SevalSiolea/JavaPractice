@@ -45,13 +45,11 @@
 棋盘的上方显示每列平行线的列序号，棋盘的左方显示每行平行线的行序号。
 
 落子的提示和询问消息：
-`Player1 turns to put a ● at : row, col `
-`Player2 turns to put a ○ at : row, col `
+`Player using ( ● / ○ ) turns to put a piece at : row, col `
 
 提示玩家落子位置无效：
 `You put at a invalid location. Please try again.`
 
 宣布游戏结果：
-`Congratrulations! Player1 with ● wins the game!`
-`Congratrulations! Player2 with ○ wins the game!`
+`Congratrulations! Player using ( ● / ○ ) wins the game!`
 `Wow! All points are filled with pieces! Two players are equally matched!`

@@ -1,6 +1,10 @@
-package MiniProject.Gomoku;
+package MiniProject.Gomoku.Enum;
 
-public class Board {
+public enum WrongInput {
+
+
+    WRONG_START( "Please enter yes or no!" ),
+    ;
 
 
     /**===============================================================================**/
@@ -8,7 +12,7 @@ public class Board {
     /**===============================================================================**/
 
 
-    private String[][] blocks;
+    private final String message;
 
 
     /**=============================================================================**/
@@ -16,7 +20,7 @@ public class Board {
     /**=============================================================================**/
 
 
-    public Board() { initBoard(); }
+    private WrongInput(String message ) { this.message = message; }
 
 
     /**===============================================================================**/
@@ -24,24 +28,7 @@ public class Board {
     /**===============================================================================**/
 
 
-    public void printBoard() {}
-
-    public void put( int row, int col, String piece ) {
-        this.blocks[ row ][ col ] = piece;
-    }
-
-
-    /**================================================================================**/
-    /**================================ private method ================================**/
-    /**================================================================================**/
-
-
-    private void initBoard() {
-        this.blocks = new String[15][15];
-        for( int i=0; i < 15; i++ )
-            for( int j=0; j < 15; j++ )
-                this.blocks[i][j] = "+";
-    }
+    public String getMessage() { return "\033[31m" + message + "\033[0m"; }
 
 
 }

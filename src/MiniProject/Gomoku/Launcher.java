@@ -37,7 +37,7 @@ public class Launcher {
             else if( input.equals( "no" ) )
                 return false;
             else
-                System.out.println( Message.WRONG_START.getMessage() );
+                System.out.println( WrongInput.WRONG_START.getMessage() );
         }
 
     }

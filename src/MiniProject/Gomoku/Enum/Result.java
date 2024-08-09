@@ -1,9 +1,10 @@
 package MiniProject.Gomoku.Enum;
 
-public enum Message {
+public enum Result {
 
 
-    WRONG_START( "Please enter yes or no!" );
+    CONTINUE( "The game is continuing..." ),
+    ;
 
 
     /**===============================================================================**/
@@ -11,7 +12,7 @@ public enum Message {
     /**===============================================================================**/
 
 
-    private final String message;
+    private String message;
 
 
     /**=============================================================================**/
@@ -19,7 +20,7 @@ public enum Message {
     /**=============================================================================**/
 
 
-    private Message( String message ) { this.message = message; }
+    private Result( String message ) { this.message = message; }
 
 
     /**===============================================================================**/
@@ -27,7 +28,7 @@ public enum Message {
     /**===============================================================================**/
 
 
-    public String getMessage() { return "\033[31m" + message + "\033[0m"; }
+    public String getMessage() { return this.message; }
 
 
 }
