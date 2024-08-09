@@ -9,6 +9,7 @@ public class Board {
 
 
     private String[][] blocks;
+    private final int length;
 
 
     /**=============================================================================**/
@@ -16,7 +17,7 @@ public class Board {
     /**=============================================================================**/
 
 
-    public Board() { initBoard(); }
+    public Board() { this.length = 15; initBoard(); }
 
 
     /**===============================================================================**/
@@ -24,11 +25,33 @@ public class Board {
     /**===============================================================================**/
 
 
-    public void printBoard() {}
+    public void printBoard() {
+
+        System.out.printf( "%-4s", "" );
+        for( int i = 0; i < this.length; i++ )
+            System.out.printf( "%-3d", i+1 );
+        System.out.println();
+
+        for( int i=0; i < this.length; i++ ) {
+            System.out.printf( "%-4d", i+1 );
+            for( int j=0; j < this.length; j++ )
+                System.out.printf( "%-3s", this.blocks[ i ][ j ] );
+            System.out.println();
+        }
+
+    }
 
     public void put( int row, int col, String piece ) {
         this.blocks[ row ][ col ] = piece;
     }
+
+    public boolean matchNullPiece( int row, int col, String piece ) {
+        if( row < 0 || row >= this.length ) return false;
+        if( col < 0 || col >= this.length ) return false;
+        return this.blocks[ row ][ col ].equals( piece );
+    }
+
+    public int getLength() { return this.length; }
 
 
     /**================================================================================**/
@@ -37,10 +60,10 @@ public class Board {
 
 
     private void initBoard() {
-        this.blocks = new String[15][15];
-        for( int i=0; i < 15; i++ )
-            for( int j=0; j < 15; j++ )
-                this.blocks[i][j] = "+";
+        this.blocks = new String[ this.length ][ this.length ];
+        for( int i=0; i < this.length; i++ )
+            for( int j=0; j < this.length; j++ )
+                this.blocks[ i ][ j ] = "+";
     }
 
 

@@ -51,5 +51,5 @@
 `You put at a invalid location. Please try again.`
 
 宣布游戏结果：
-`Congratrulations! Player using ( ● / ○ ) wins the game!`
+`Congratulations! Player using ( ● / ○ ) wins the game!`
 `Wow! All points are filled with pieces! Two players are equally matched!`

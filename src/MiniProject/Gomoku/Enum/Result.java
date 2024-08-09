@@ -4,6 +4,8 @@ public enum Result {
 
 
     CONTINUE( "The game is continuing..." ),
+    WIN( "Congratulations! Player using # wins the game!" ),
+    DRAW( "Wow! All points are filled with pieces! Two players are equally matched!" ),
     ;
 
 

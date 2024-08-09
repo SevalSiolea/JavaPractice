@@ -4,6 +4,7 @@ public enum WrongInput {
 
 
     WRONG_START( "Please enter yes or no!" ),
+    INVALID_LOCATION( "You put at a invalid location. Please try again." ),
     ;
 
 
@@ -20,7 +21,7 @@ public enum WrongInput {
     /**=============================================================================**/
 
 
-    private WrongInput(String message ) { this.message = message; }
+    private WrongInput( String message ) { this.message = message; }
 
 
     /**===============================================================================**/

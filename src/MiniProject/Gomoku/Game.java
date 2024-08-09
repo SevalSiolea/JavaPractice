@@ -10,9 +10,9 @@ public class Game {
     /**===============================================================================**/
 
 
-    private Player player1;
-    private Player player2;
-    private Board board;
+    private final Player player1;
+    private final Player player2;
+    private final Board board;
     private Result result;
 
 
@@ -39,11 +39,13 @@ public class Game {
         while( this.result == Result.CONTINUE ) {
             this.board.printBoard();
             Location location = getLocation( currentPlayer );
-            this.board.put( location.getRow(), location.getCol(), currentPlayer.getPiece() );
+            put( location );
             currentPlayer = ( currentPlayer == this.player1 ) ? this.player2 : this.player1;
-            judgeWin( location.getRow(), location.getCol() );
+            judgeWin( location );
         }
-        endGame();
+        this.board.printBoard();
+        currentPlayer = ( currentPlayer == this.player1 ) ? this.player2 : this.player1;
+        endGame( currentPlayer );
     }
 
 
@@ -54,15 +56,72 @@ public class Game {
 
     private Location getLocation( Player currentPlayer ) {
         java.util.Scanner scanner = new java.util.Scanner( System.in );
-        System.out.print( "Player using " + currentPlayer.getPiece() + " turns to put a piece at : " );
-        int row = scanner.nextInt();
-        int col = scanner.nextInt();
-        return new Location( row - 1, col - 1 );
+        while( true ) {
+            System.out.print( "Player using " + currentPlayer.getPiece() + " turns to put a piece at : " );
+            int row = scanner.nextInt() - 1;
+            int col = scanner.nextInt() - 1;
+            if( !this.board.matchNullPiece( row, col, "+" ) )
+                System.out.println( WrongInput.INVALID_LOCATION.getMessage() );
+            else
+                return new Location( row, col, currentPlayer.getPiece() );
+        }
     }
 
-    private void judgeWin( int row, int col ) {}
+    private void judgeWin( Location location ) {
 
-    private void endGame() {}
+        int row = location.row;
+        int col = location.col;
+        String piece = location.piece;
+        int count;
+
+        count = 0;
+        for( int i = -4; i <= 4; i++ ) {
+            count = board.matchNullPiece( row, col + i, piece ) ? count + 1 : 0;
+            if( count == 5 ) {
+                this.result = Result.WIN;
+                break;
+            }
+        }
+
+        count = 0;
+        for( int i = -4; i <= 4; i++ ) {
+            count = board.matchNullPiece( row + i, col, piece ) ? count + 1 : 0;
+            if( count == 5 ) {
+                this.result = Result.WIN;
+                break;
+            }
+        }
+
+        count = 0;
+        for( int i = -4; i <= 4; i++ ) {
+            count = board.matchNullPiece( row + i, col + i, piece ) ? count + 1 : 0;
+            if( count == 5 ) {
+                this.result = Result.WIN;
+                break;
+            }
+        }
+
+        count = 0;
+        for( int i = -4; i <= 4; i++ ) {
+            count = board.matchNullPiece( row - i, col + i, piece ) ? count + 1 : 0;
+            if( count == 5 ) {
+                this.result = Result.WIN;
+                break;
+            }
+        }
+
+    }
+
+    private void endGame( Player currentPlayer ) {
+        if( this.result == Result.DRAW )
+            System.out.println( result.getMessage() );
+        else
+            System.out.println( result.getMessage().replaceAll( "#", currentPlayer.getPiece() ) );
+    }
+
+    private void put( Location location ) {
+        this.board.put( location.row, location.col, location.piece );
+    }
 
 
     /**===============================================================================**/
@@ -70,15 +129,15 @@ public class Game {
     /**===============================================================================**/
 
 
-    private class Location{
+    private static class Location{
 
-        private int row;
-        private int col;
+        private final int row;
+        private final int col;
+        private final String piece;
 
-        public Location( int row, int col ) { this.row = row; this.col = col; }
-
-        public int getRow() { return this.row; }
-        public int getCol() { return this.col; }
+        public Location( int row, int col, String piece ) {
+            this.row = row; this.col = col; this.piece = piece;
+        }
 
     }
 
