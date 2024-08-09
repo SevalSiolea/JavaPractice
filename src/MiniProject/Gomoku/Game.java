@@ -57,7 +57,7 @@ public class Game {
     private Location getLocation( Player currentPlayer ) {
         java.util.Scanner scanner = new java.util.Scanner( System.in );
         while( true ) {
-            System.out.print( "Player using " + currentPlayer.getPiece() + " turns to put a piece at : " );
+            System.out.print( Prompt.PUT_PIECE.getMessage().replaceAll( "#", currentPlayer.getPiece() ) );
             int row = scanner.nextInt() - 1;
             int col = scanner.nextInt() - 1;
             if( !this.board.matchNullPiece( row, col, "+" ) )

@@ -30,7 +30,7 @@ public class Launcher {
         java.util.Scanner scanner = new java.util.Scanner( System.in );
 
         while( true ) {
-            System.out.print( "Start a new Game ( yes / no ) : " );
+            System.out.print( Prompt.START_GAME.getMessage() );
             String input = scanner.nextLine().trim().toLowerCase();
             if( input.equals( "yes" ) )
                 return true;
